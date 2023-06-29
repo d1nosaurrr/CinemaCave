@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 export default function PageNotFound() {
     return (
-        <section className='not__found'>
+        <section className='d-flex not__found'>
             <h1 className='not-found__tittle'>4<span className='not-found__ghost'><FontAwesomeIcon
                 icon={faGhost}/></span>4</h1>
             <h2 className='not-found__description'>Error: 404 page not found</h2>

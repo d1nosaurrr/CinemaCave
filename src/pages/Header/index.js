@@ -15,8 +15,8 @@ export default function Index() {
         setIsCategoriesHidden(prevValue => !prevValue);
     }
 
-    const aside = document.querySelector('.aside');
-    if (aside) !isCategoriesHidden ? aside.classList.add('active') : aside.classList.remove('active');
+    // const aside = document.querySelector('.aside');
+    // if (aside) !isCategoriesHidden ? aside.classList.add('active') : aside.classList.remove('active');
 
     const handleClearSearch = () => {
         setSearchValue('');
@@ -31,17 +31,19 @@ export default function Index() {
     return (
         <header className='header'>
             <div className='container'>
-                <section className='header__section'>
-                    <Link className='header__logo' to='./'>
+                <section className='d-flex header__section'>
+                    <Link className='d-flex header__logo' to='./'>
                         <img className='logo__img' src={logo} alt='logo' width='50' height='50'/>
+                        <span className="logo__title">Movie Cave</span>
                     </Link>
-                    <div onClick={toggleMenu} className={`menu__toggle ${!isCategoriesHidden ? 'active' : ''}`}>
+                    <div onClick={toggleMenu} className={`d-flex menu__toggle ${!isCategoriesHidden ? 'active' : ''}`}>
                         <span className='line line1'></span>
                         <span className='line line2'></span>
                         <span className='line line3'></span>
                     </div>
 
-                    <form onSubmit={(e) => e.preventDefault()} className='header__search' action=''>
+                    <form onSubmit={(e) => e.preventDefault()}
+                          className='d-flex header__search' action=''>
                         <label className='sr-only' htmlFor='search'>Search</label>
                         <input
                             className='header__search-input'

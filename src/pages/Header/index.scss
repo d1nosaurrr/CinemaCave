@@ -1,6 +1,13 @@
 .header {
-  background-color: $dark-bg-color;
+  background-color: $dark-color;
   position: relative;
+
+  &__logo {
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+  }
 
   &__section {
     @include flex-align-center;
@@ -55,15 +62,27 @@
   }
 }
 
-.logo__img {
-  transition: width 0.5s ease-in-out;
+.logo {
+
+  &__img {
+    transition: width 0.5s ease-in-out;
+  }
+
+  &__title {
+    display: none;
+    color: $light-color;
+    font-family: 'Caprasimo', cursive;
+    @include font-style(30px, 30px, normal);
+    text-decoration: none;
+
+
+  }
 }
 
 .menu__toggle {
   order: 2;
   height: 26px;
   width: 32px;
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
 
@@ -121,11 +140,11 @@
 }
 
 .aside.active {
-  display: block;
+  display: flex;
   position: absolute;
   top: 120px;
   width: 100%;
-  background-color: $bg-color;
+  background-color: $dark-color;
 
   & > .categories > .categories__item {
     width: 100%;
@@ -142,10 +161,13 @@
     order: 2;
   }
 
-  .logo__img {
-    width: 75px;
-    height: 75px;
+  .logo {
+    &__img {
+      width: 75px;
+      height: 75px;
+    }
   }
+
 
   .aside.active {
     top: 99px;
@@ -156,13 +178,19 @@
   .menu__toggle {
     display: none;
   }
-  .logo__img {
-    width: 100px;
-    height: 100px;
+  .logo {
+    &__img {
+      width: 100px;
+      height: 100px;
+    }
+
+    &__title {
+      display: block;
+    }
   }
   .aside,
   .aside.active {
-    display: block;
+    display: flex;
     position: relative;
     top: 0;
     width: 150px;

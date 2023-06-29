@@ -1,3 +1,3 @@
 export default function Loader() {
-    return <span className="loader"></span>
+    return <div className='loader__wrapper'><span className="loader"></span></div>
 }

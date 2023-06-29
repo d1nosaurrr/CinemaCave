@@ -1,10 +1,12 @@
-$dark-bg-color: #242423;
-$bg-color: #171718;
-$light-color: #e8eddf;
-$accent-color: #ecab0b;
+$dark-color: #202020;
+$dark-light-color: #2E2E2E;
+$light-color: #F4F1DE;
+$gray-color: #9fa49b;
+$accent-color: #2BA84A;
+$accent-light-color: #248232;
 
 html {
-  background-color: $bg-color;
+  background-color: $dark-light-color;
   color: $light-color;
   font-family: 'Poppins', sans-serif;
 }
@@ -24,4 +26,19 @@ html {
   &:hover {
     color: $accent-color;
   }
+}
+
+.p-relative{
+  position: relative;
+}
+
+.d-flex{
+  display: flex;
+}
+
+.f-width{
+  width: 100%;
+}
+.f-height{
+  height: 100%;
 }
