@@ -1,0 +1,68 @@
+.not {
+  &__found {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    text-align: center;
+  }
+
+  &-found {
+    &__tittle {
+      color: $light-color;
+      @include font-style(8.5rem, .10em, normal);
+      margin: 10px 0;
+      white-space: nowrap;
+
+      @media screen and (min-width: 767px) {
+        @include font-style(12.5rem, .10em, normal);
+
+      }
+    }
+
+    &__ghost {
+      margin: 0 5px;
+      animation: spooky 2s alternate infinite linear;
+      color: $accent-color;
+      display: inline-block;
+    }
+
+    &__description {
+      color: $light-color;
+      margin-bottom: 15px;
+      @include font-style(20px, 20px, normal);
+
+      @media screen and (min-width: 767px) {
+        @include font-style(45px, 45px, normal);
+      }
+    }
+    &__link{
+      color: $accent-color;
+      &:visited{
+        color: $accent-color;
+      }
+      &:focus,
+      &:hover{
+        color: #674800;
+      }
+    }
+  }
+}
+
+
+p {
+  color: #ccc;
+  margin-top: 0;
+}
+
+@keyframes spooky {
+  from {
+    transform: translatey(.15em) scaley(.95);
+  }
+
+  to {
+    transform: translatey(-.15em);
+  }
+}

@@ -1,0 +1,86 @@
+.info {
+  &__header {
+    @include flex-align-center;
+    justify-content: space-between;
+  }
+
+  &__body {
+    margin: 20px 0;
+    @include flex-align-center;
+    flex-direction: column;
+    gap: 20px;
+    @media screen and (min-width: 767px){
+      flex-direction: row;
+    }
+  }
+}
+
+.production__info {
+  @include flex-align-center;
+  gap: 20px;
+  align-items: start;
+  align-self: start;
+  flex-direction: column;
+
+}
+
+.item__title {
+  color: $accent-color;
+}
+
+.movie {
+  &__title {
+    margin: 5px 0;
+    @include font-style(18px, 18px, normal);
+
+    &-original {
+      @include font-style(16px, 16px, italic);
+      color: #9fa49b;
+
+    }
+  }
+}
+
+#fivestars {
+  fill: $bg-color;
+}
+
+.rating {
+  width: 120px;
+  position: relative;
+
+  &__vote {
+    display: none;
+    margin-top: 5px;
+    @include font-style(14px, 14px, normal);
+
+    @media screen and (min-width: 600px){
+      display: block;
+    }
+  }
+
+  & progress.rating-bg {
+    appearance: none;
+    border: none;
+    display: inline-block;
+    height: 24px;
+    width: 100%;
+    color: $accent-color;
+  }
+
+  & progress.rating-bg::-webkit-progress-value {
+    background-color: $accent-color;
+  }
+
+  & progress.rating-bg::-moz-progress-bar {
+    background-color: $accent-color;
+  }
+
+  & svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

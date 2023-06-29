@@ -1,0 +1,8 @@
+.main{
+  margin: 20px 0;
+}
+.container--main {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}

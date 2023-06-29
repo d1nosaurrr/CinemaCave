@@ -1,0 +1,11 @@
+@import 'reset';
+@import 'mixins';
+@import 'general';
+@import './movieList';
+@import '../components/Loader';
+@import '../pages/PageNotFound';
+@import '../pages/Header';
+@import '../pages/Aside';
+@import '../pages/Main';
+@import '../pages/MovieInfo';
+@import '../pages/Footer';
