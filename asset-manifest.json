@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/CinemaCave/static/css/main.679bba5f.css",
-    "main.js": "/CinemaCave/static/js/main.48de398d.js",
-    "static/media/logo.svg": "/CinemaCave/static/media/logo.a2cc2fdea88d7961067d2249c8d67554.svg",
+    "main.css": "/CinemaCave/static/css/main.959aa07d.css",
+    "main.js": "/CinemaCave/static/js/main.56b466e1.js",
+    "static/media/logo.svg": "/CinemaCave/static/media/logo.3da36df0fc0f61bc27f273c580240334.svg",
     "index.html": "/CinemaCave/index.html",
-    "main.679bba5f.css.map": "/CinemaCave/static/css/main.679bba5f.css.map",
-    "main.48de398d.js.map": "/CinemaCave/static/js/main.48de398d.js.map"
+    "main.959aa07d.css.map": "/CinemaCave/static/css/main.959aa07d.css.map",
+    "main.56b466e1.js.map": "/CinemaCave/static/js/main.56b466e1.js.map"
   },
   "entrypoints": [
-    "static/css/main.679bba5f.css",
-    "static/js/main.48de398d.js"
+    "static/css/main.959aa07d.css",
+    "static/js/main.56b466e1.js"
   ]
 }
