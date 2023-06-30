@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import Aside from '../../pages/AsideFilter';
+import AsideFilter from '../../pages/AsideFilter';
 import MovieList from '../../pages/MovieList';
 import {fetchFilterMovie} from '../../state/actions/movieList';
 import {useSearchParams} from 'react-router-dom';
@@ -17,6 +17,7 @@ export default function Wrapper() {
         sort: '',
         page: parseInt(searchParams.get('page') || 1),
     });
+    const {movieList} = useSelector(({movies}) => movies);
 
     const handleFilter = (data) => {
         setFilterValue(() => ({
@@ -44,24 +45,21 @@ export default function Wrapper() {
             page: pageNum
         }));
     };
-
     return (
-        <main className='main'>
-            <div className='container container--main'>
-                <MovieList />
-                <Aside handleFilter={handleFilter}/>
-                <>
-                    <div className='d-flex pagination'>
-                        <FontAwesomeIcon className='pagination__arrow'
-                                         onClick={() => handlePagination(page.currPage - 1)}
-                                         icon={faArrowLeft}/>
-                        <span className='pagination__page'>{page.currPage}</span>
-                        <FontAwesomeIcon className='pagination__arrow'
-                                         onClick={() => handlePagination(page.currPage + 1)}
-                                         icon={faArrowRight}/>
-                    </div>
-                </>
+        <div className='wrapper'>
+            <MovieList list={movieList}/>
+            <AsideFilter handleFilter={handleFilter}/>
+            <div className='wrapper_fixed'>
+                <div className='d-flex pagination'>
+                    <FontAwesomeIcon className='pagination__arrow'
+                                     onClick={() => handlePagination(page.currPage - 1)}
+                                     icon={faArrowLeft}/>
+                    <span className='pagination__page'>{page.currPage}</span>
+                    <FontAwesomeIcon className='pagination__arrow'
+                                     onClick={() => handlePagination(page.currPage + 1)}
+                                     icon={faArrowRight}/>
+                </div>
             </div>
-        </main>
+        </div>
     );
 }

@@ -1,8 +1,9 @@
 @import 'reset';
 @import 'mixins';
 @import 'general';
-@import './movieListItem';
 @import '../components/Loader';
+@import '../components/Wrapper';
+@import '../components/MovieListItem';
 @import '../pages/PageNotFound';
 @import '../pages/Header';
 @import '../pages/Main';

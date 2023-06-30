@@ -8,7 +8,7 @@
   }
 
   &__description {
-    @include font-style(14px, 14px, normal);
+    @include font-style(14px, normal);
     transition: font-size 0.5s ease;
   }
 
@@ -28,7 +28,7 @@
 
     &__description,
     &__link {
-      @include font-style(18px, 18px, normal);
+      @include font-style(18px, normal);
       transition: font-size 0.5s ease;
     }
   }

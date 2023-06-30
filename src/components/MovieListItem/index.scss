@@ -12,9 +12,9 @@
   &::after {
     content: '';
     position: absolute;
-    bottom: 2px;
+    bottom: 0;
     right: 0;
-    //z-index: 4;
+    border-radius: 15px;
     width: 100%;
     height: 250px;
     background-image: linear-gradient(to top, rgb(0 0 0 / 0.9), rgb(0 0 0 / 0));
@@ -31,10 +31,18 @@
 
   &__title {
     @include flex-align-center;
-    justify-content: center;
-    padding: 10px;
-    @include font-style(16px, 16px, normal);
-    text-align: center;
+    padding-block: 10px;
+    @include font-style(14px, normal);
+    text-overflow: ellipsis;
+    word-break: break-all;
+    overflow: hidden;
+    white-space: nowrap;
+
+    &:hover {
+      overflow: visible;
+      white-space: normal;
+      height: auto;
+    }
   }
 
   &__description {
@@ -44,6 +52,7 @@
     bottom: 2px;
     padding: 10px;
     flex-direction: column;
+    overflow-wrap: break-word;
 
     .rate::after {
       content: '\2605'
@@ -56,15 +65,15 @@
   }
 }
 
-.draw-border{
+.draw-border {
   border: 2px solid transparent;
 
-    &:focus,
-    &:hover{
-      border: 2px solid $accent-color;
+  &:focus,
+  &:hover {
+    border: 2px solid $accent-color;
 
-      .card__title{
-        color: $accent-color;
-      }
+    .card__title {
+      color: $accent-color;
     }
+  }
 }

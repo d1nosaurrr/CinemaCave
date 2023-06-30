@@ -1,0 +1,14 @@
+.wrapper {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 10px;
+
+  &__fixed {
+    position: absolute;
+  }
+
+  @media screen and (min-width: 767px) {
+    grid-template-columns:1fr auto;
+    grid-template-rows: auto;
+  }
+}

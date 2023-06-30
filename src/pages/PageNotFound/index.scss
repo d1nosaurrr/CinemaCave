@@ -11,12 +11,12 @@
   &-found {
     &__tittle {
       color: $light-color;
-      @include font-style(8.5rem, .10em, normal);
+      @include font-style(8.5rem, normal);
       margin: 10px 0;
       white-space: nowrap;
 
       @media screen and (min-width: 767px) {
-        @include font-style(12.5rem, .10em, normal);
+        @include font-style(12.5rem, normal);
 
       }
     }
@@ -31,19 +31,22 @@
     &__description {
       color: $light-color;
       margin-bottom: 15px;
-      @include font-style(20px, 20px, normal);
+      @include font-style(20px, normal);
 
       @media screen and (min-width: 767px) {
-        @include font-style(45px, 45px, normal);
+        @include font-style(45px, normal);
       }
     }
-    &__link{
+
+    &__link {
       color: $accent-color;
-      &:visited{
+
+      &:visited {
         color: $accent-color;
       }
+
       &:focus,
-      &:hover{
+      &:hover {
         color: #674800;
       }
     }

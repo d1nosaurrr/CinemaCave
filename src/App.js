@@ -1,15 +1,18 @@
 import './styles/style.scss';
-import React, {useEffect} from 'react';
+import React, {lazy, Suspense, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import {Route, Routes, useSearchParams} from 'react-router-dom';
 import Header from './pages/Header';
-import Main from './pages/Main';
 import Footer from './pages/Footer';
 import {fetchGenre} from './state/actions/genre';
 import {fetchMovie} from './state/actions/movieList';
-import PageNotFound from "./pages/PageNotFound";
-import MovieInfo from "./pages/MovieInfo";
-import Wrapper from "./components/Wrapper";
+import PageNotFound from './pages/PageNotFound';
+import Loader from "./components/Loader";
+
+import Main from './pages/Main';
+
+const LazyMovieInfo = lazy(() => import('./pages/MovieInfo'));
+const LazyWrapper = lazy(() => import('./components/Wrapper'));
 
 function App() {
     const dispatch = useDispatch();
@@ -24,27 +27,29 @@ function App() {
     return (
         <>
             <Header/>
-            <Routes>
-                <Route path='/' element={
-                    <Main>
-                        <Wrapper />
-                    </Main>
-                }/>
-                <Route path='/movie/:id' element={
-                    <Main>
-                        <MovieInfo/>
-                    </Main>
-                }/>
-                <Route path='*' element={
-                    <PageNotFound/>
-                }/>
-                Main>
+            <Main>
+                <Routes>
+                    <Route path='/' element={
+                        <Suspense fallback={<Loader/>}>
+                            <LazyWrapper/>
+                        </Suspense>
+                    }/>
+                    <Route path='/movie/:id' element={
+                        <Suspense fallback={<Loader/>}>
+                            <LazyMovieInfo/>
+                        </Suspense>
 
-            </Routes>
+                    }/>
+                    <Route path='*' element={
+                        <PageNotFound/>
+                    }/>
+                </Routes>
+            </Main>
             <Footer/>
         </>
     );
 }
 
-export default App;
+export default App
+;
 

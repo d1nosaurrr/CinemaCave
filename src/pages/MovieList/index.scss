@@ -2,14 +2,15 @@
   &__list {
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: auto;
     gap: 20px 15px;
 
     @media screen and (min-width: 460px) {
       grid-template-columns: repeat(3, 1fr);
     }
-    @media screen and (min-width: 767px) {
+    @media screen and (min-width: 950px) {
       grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto;
     }
   }
 }

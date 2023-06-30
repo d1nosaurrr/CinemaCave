@@ -12,6 +12,7 @@ html {
 }
 
 .container {
+  position: relative;
   margin: 0 auto;
   min-width: 320px;
   max-width: 1200px;
@@ -28,17 +29,22 @@ html {
   }
 }
 
-.p-relative{
+.p-relative {
   position: relative;
 }
 
-.d-flex{
+.d-flex {
   display: flex;
 }
 
-.f-width{
+.f-width {
   width: 100%;
 }
-.f-height{
+
+.f-height {
   height: 100%;
+}
+
+.br-15 {
+  border-radius: 15px;
 }

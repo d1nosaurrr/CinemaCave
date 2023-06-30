@@ -2,8 +2,8 @@
   align-items: center;
 }
 
-@mixin font-style($size, $height, $style){
+@mixin font-style($size, $style){
   font-size: $size;
-  line-height: $height;
+  line-height: $size * 1.5;
   font-style: $style;
 }

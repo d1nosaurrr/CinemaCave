@@ -1,12 +1,14 @@
 import {useSelector} from 'react-redux';
-import {useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {useSearchParams} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faFilter} from '@fortawesome/free-solid-svg-icons';
 
-export default function Aside({handleFilter}) {
+export default function AsideFilter({handleFilter}) {
     const [searchParams] = useSearchParams();
-    const years = useRef([])
+    const years = useRef([]);
+    const [isAsideActive, setIsAsideActive] = useState(false);
+
     const [activeFilter, setActiveFilter] = useState(
         {
             genre: searchParams.getAll('genre') || '',
@@ -34,35 +36,48 @@ export default function Aside({handleFilter}) {
         years.current = elList
     })();
 
+    const toggleMenu = () => {
+        setIsAsideActive(prevValue => !prevValue);
+    }
     return (
-        <aside className='aside'>
+        <>
+            <div onClick={toggleMenu} className={`d-flex menu__toggle ${isAsideActive ? 'active' : ''}`}>
+                <span className='line line1'></span>
+                <span className='line line2'></span>
+                <span className='line line3'></span>
+            </div>
+            <aside className={`aside ${isAsideActive ? 'active' : ''}`}>
 
-            <FontAwesomeIcon
-                onClick={() => handleFilter(activeFilter)}
-                className='movie__filter' icon={faFilter}/>
-            <select
-                defaultValue='popularity.desc'
+                <FontAwesomeIcon
+                    onClick={() => {
+                        toggleMenu();
+                        handleFilter(activeFilter)
+                    }}
+                    className='movie__filter' icon={faFilter}/>
+                <select
+                    defaultValue='popularity.desc'
 
-                onChange={({target}) => activeFilter.sort = target.value}
-                name='sort'>
-                <option value='popularity.desc'>More popular first</option>
-                <option value='popularity.asc'>Less popular first</option>
-                <option value='primary_release_date.desc'>Newer</option>
-                <option value='primary_release_date.asc'>Older</option>
-            </select>
-            <select
-                onChange={({target}) => activeFilter.year = target.value}
-                className='movie__years'
-                defaultValue={activeFilter.year}
-            >
-                {years.current}
-            </select>
-            <ul className='d-flex movie__categories categories'>
-                {genre.map(({id, name}) => <li
-                    onClick={() => handleToggleGenre(id.toString())}
-                    className={`categories__item ${activeFilter.genre.includes(id.toString()) ? 'active' : ''}`}
-                    key={id}>{name}</li>)}
-            </ul>
-        </aside>
+                    onChange={({target}) => activeFilter.sort = target.value}
+                    name='sort'>
+                    <option value='popularity.desc'>More popular first</option>
+                    <option value='popularity.asc'>Less popular first</option>
+                    <option value='primary_release_date.desc'>Newer</option>
+                    <option value='primary_release_date.asc'>Older</option>
+                </select>
+                <select
+                    onChange={({target}) => activeFilter.year = target.value}
+                    className='movie__years'
+                    defaultValue={activeFilter.year}
+                >
+                    {years.current}
+                </select>
+                <ul className='d-flex movie__categories categories'>
+                    {genre.map(({id, name}) => <li
+                        onClick={() => handleToggleGenre(id.toString())}
+                        className={`categories__item ${activeFilter.genre.includes(id.toString()) ? 'active' : ''}`}
+                        key={id}>{name}</li>)}
+                </ul>
+            </aside>
+        </>
     )
 }

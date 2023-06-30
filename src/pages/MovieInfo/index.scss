@@ -12,7 +12,6 @@
   }
 
   &__body {
-    margin: 20px 0;
     @include flex-align-center;
     flex-direction: column;
     gap: 20px;
@@ -30,17 +29,15 @@
   }
 
   &__item {
-    position: relative;
     min-width: 280px;
     max-width: 100%;
-    @include font-style(14px, 14px, normal);
+    @include font-style(14px, normal);
   }
 }
 
 .production__info {
   display: grid;
   grid-template-rows: 1fr;
-  //grid-template-columns: 500px;
   gap: 20px;
   align-items: start;
   align-self: start;
@@ -55,12 +52,22 @@
 .movie {
   &__title {
     margin: 5px 0;
-    @include font-style(18px, 18px, normal);
+    @include font-style(18px, normal);
 
     &-original {
-      @include font-style(16px, 16px, italic);
+      @include font-style(16px, italic);
       color: $gray-color;
 
+    }
+  }
+
+  &__similar {
+    margin-top: 20px;
+  }
+
+  &-similar {
+    &__title {
+      @include font-style(20px, normal);
     }
   }
 }
@@ -71,7 +78,6 @@
 
 .rating {
   width: auto;
-  position: relative;
 
   @include flex-align-center;
   flex-direction: column;
@@ -79,7 +85,7 @@
   &__vote {
     margin-top: 5px;
     //display: none;
-    @include font-style(14px, 14px, normal);
+    @include font-style(14px, normal);
 
     @media screen and (min-width: 600px) {
       display: block;
@@ -90,7 +96,6 @@
 .stars {
   &-outer {
     display: inline-block;
-    position: relative;
   }
 
   &-outer::before,
@@ -120,13 +125,9 @@
 .movie__preview {
   -ms-overflow-style: none;
   scrollbar-width: none;
-
-
-  max-width: 780px;
-
   min-height: 150px;
   max-height: 250px;
-  padding: 2px;
+  width: 100%;
   display: flex;
   overflow-y: scroll;
 }
@@ -135,15 +136,26 @@
   display: inline-block;
   min-width: auto;
   width: 100%;
-
   height: 250px;
   border-radius: 8px;
-  margin: 2px;
-  border: 2px solid transparent;
 }
 
 .preview__img {
   object-fit: contain;
   width: auto;
+  height: 250px;
+}
+
+#fullpage {
+  display: none;
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  width: 100%;
   height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat no-repeat;
 }
