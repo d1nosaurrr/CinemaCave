@@ -7,7 +7,7 @@ import Footer from './pages/Footer';
 import {fetchGenre} from './state/actions/genre';
 import {fetchMovie} from './state/actions/movieList';
 import PageNotFound from './pages/PageNotFound';
-import Loader from "./components/Loader";
+import Loader from './components/Loader';
 
 import Main from './pages/Main';
 

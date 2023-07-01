@@ -5,7 +5,7 @@ import Loader from '../../components/Loader';
 import {fetchMovieInfo, fetchSimilarMovie} from '../../state/actions/movieList';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faArrowLeft} from '@fortawesome/free-solid-svg-icons';
-import {fetchMovieImages} from '../../state/actions/movieImages';
+import {fetchMovieImages, fetchMovieVideo} from '../../state/actions/movieMedia';
 import MovieList from '../../components/MovieList';
 
 export default function MovieInfo() {
@@ -14,16 +14,20 @@ export default function MovieInfo() {
     const navigate = useNavigate();
 
     const {movieInfo, movieSimilar, isLoading} = useSelector(({movies}) => movies);
-    const images = useSelector(({images}) => images.movieImages);
+    const {movieImages, movieVideo} = useSelector(({media}) => media);
     const padTo2Digits = (num) => num.toString().padStart(2, '0');
 
     const toHourConverter = (minutes) => !isNaN(minutes) ? `${padTo2Digits(Math.floor(minutes / 60))} : ${padTo2Digits(Math.round(minutes % 60))}` : 'N/A';
 
     useEffect(() => {
+        window.scrollTo({top: 0, behavior: 'smooth'});
         dispatch(fetchMovieInfo(id))
         dispatch(fetchMovieImages(id))
+        dispatch(fetchMovieVideo(id))
         dispatch(fetchSimilarMovie(id))
     }, [dispatch, id]);
+    console.log(movieVideo)
+
     const {
         title,
         original_title,
@@ -41,7 +45,7 @@ export default function MovieInfo() {
         {isLoading ?
             <Loader/>
             :
-            Object.keys(movieInfo).length > 0 && Object.keys(images).length > 0 &&
+            Object.keys(movieInfo).length > 0 && Object.keys(movieImages).length > 0 &&
             <section className='movie__info'>
                 <FontAwesomeIcon className='back__arrow' onClick={() => navigate(-1)} icon={faArrowLeft}/>
                 <div className='d-flex info__header'>
@@ -100,7 +104,13 @@ export default function MovieInfo() {
                                     e.preventDefault();
                                     document.querySelector('.movie__preview').scrollLeft += e.deltaY + e.deltaX;
                                 }}>
-                                {images.backdrops.slice(0, 7).map(({file_path}) =>
+                                <li className='preview__item'>
+                                    <iframe allow='autoplay; encrypted-media'
+                                            allowFullScreen title='video'
+                                            src={`https://www.youtube.com/embed/${movieVideo.key}`}
+                                            className='f-width preview__video'></iframe>
+                                </li>
+                                {movieImages.backdrops.slice(0, 7).map(({file_path}) =>
                                     <li key={file_path} className='preview__item'>
                                         <img
                                             src={'https://image.tmdb.org/t/p/original/' + file_path}

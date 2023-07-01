@@ -3,8 +3,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import AsideFilter from '../AsideFilter';
 import MovieList from '../MovieList';
 import {useSearchParams} from 'react-router-dom';
-import {fetchFilterMovie, fetchMovieByQuery} from "../../state/actions/movieList";
-import Pagination from "../Pagination";
+import {fetchFilterMovie, fetchMovieByQuery} from '../../state/actions/movieList';
+import Pagination from '../Pagination';
 
 export default function Wrapper() {
     const dispatch = useDispatch();
@@ -21,12 +21,15 @@ export default function Wrapper() {
     useEffect(() => {
         window.scrollTo({top: 0, behavior: 'smooth'});
 
-        if (!flag) {
-            searchParams.set('query', filterValue.query)
-            searchParams.set('page', filterValue.page)
+        if (flag) {
+            const query = searchParams.get('query');
+            if (query) {
+                searchParams.set('query', query)
+                searchParams.set('page', filterValue.page)
 
-            setSearchParams(searchParams);
-            dispatch(fetchMovieByQuery(filterValue.query, true, filterValue.page));
+                setSearchParams(searchParams);
+                dispatch(fetchMovieByQuery(query, true, filterValue.page));
+            }
         } else {
             setSearchParams({...filterValue});
             dispatch(fetchFilterMovie({...filterValue}));

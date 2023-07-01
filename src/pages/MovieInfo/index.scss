@@ -26,6 +26,11 @@
     width: 100%;
     height: auto;
     border-radius: 15px;
+
+    @media screen and (min-width: 767px){
+      align-self: start;
+
+    }
   }
 
   &__item {
@@ -132,18 +137,20 @@
   overflow-y: scroll;
 }
 
-.preview__item {
-  display: inline-block;
-  min-width: auto;
-  width: 100%;
-  height: 250px;
-  border-radius: 8px;
-}
-
-.preview__img {
-  object-fit: contain;
-  width: auto;
-  height: 250px;
+.preview {
+  &__item {
+    display: inline-block;
+    min-width: auto;
+    width: 100%;
+    height: 250px;
+    border-radius: 8px;
+  }
+  &__video,
+  &__img {
+    object-fit: contain;
+    width: auto;
+    height: 240px;
+  }
 }
 
 #fullpage {

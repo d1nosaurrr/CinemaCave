@@ -1,7 +1,13 @@
-import {FETCH_MOVIE_IMAGES_BEGIN, FETCH_MOVIE_IMAGES_FAILURE, FETCH_MOVIE_IMAGES_SUCCESS} from "../actions/movieImages";
+import {
+    FETCH_MOVIE_IMAGES_SUCCESS,
+    FETCH_MOVIE_MEDIA_BEGIN,
+    FETCH_MOVIE_MEDIA_FAILURE,
+    FETCH_MOVIE_VIDEO_SUCCESS
+} from "../actions/movieMedia";
 
 const initialState = {
     movieImages: [],
+    movieVideo: {},
     isLoading: false,
     isError: false,
     error: null,
@@ -9,12 +15,15 @@ const initialState = {
 
 
 export const reducer = (state = initialState, action) => {
+    console.log(action.payload)
     switch (action.type) {
-        case FETCH_MOVIE_IMAGES_BEGIN            :
+        case FETCH_MOVIE_MEDIA_BEGIN            :
             return {...state, isLoading: true};
         case FETCH_MOVIE_IMAGES_SUCCESS:
             return {...state, isLoading: false, movieImages: action.payload};
-        case FETCH_MOVIE_IMAGES_FAILURE:
+        case FETCH_MOVIE_VIDEO_SUCCESS:
+            return {...state, isLoading: false, movieVideo: action.payload};
+        case FETCH_MOVIE_MEDIA_FAILURE:
             return {...state, isLoading: false, isError: true, error: action.payload};
         default:
             return state;

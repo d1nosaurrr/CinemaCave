@@ -4,12 +4,11 @@ import {faX} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {fetchMovie, fetchMovieByQuery} from '../../state/actions/movieList';
 import {useDispatch, useSelector} from 'react-redux';
-import {Link, useNavigate, useSearchParams} from 'react-router-dom';
-import SearchDropdown from "../../components/SearchDropdown";
-import Loader from "../../components/Loader";
+import {Link, useSearchParams} from 'react-router-dom';
+import SearchDropdown from '../../components/SearchDropdown';
+import Loader from '../../components/Loader';
 
 export default function Header() {
-    let navigate = useNavigate();
     const dispatch = useDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
 
@@ -27,7 +26,6 @@ export default function Header() {
         e.preventDefault();
         if (searchValue !== '') {
             handleClearSearch();
-            navigate('./search/');
             setSearchParams(`query=${searchValue}`);
             dispatch(fetchMovieByQuery(searchValue, true));
         }
@@ -42,7 +40,7 @@ export default function Header() {
         <header className='p-relative header'>
             <div className='container'>
                 <section className='d-flex header__section'>
-                    <Link className='d-flex header__logo' onClick={() => dispatch(fetchMovie() )} to='./'>
+                    <Link className='d-flex header__logo' onClick={() => dispatch(fetchMovie())} to='./'>
                         <img className='logo__img' src={logo} alt='logo' width='50' height='50'/>
                         <span className='logo__title'>Movie Cave</span>
                     </Link>

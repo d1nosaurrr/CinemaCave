@@ -6,12 +6,16 @@
   flex-direction: column;
   gap: 10px;
   width: 100%;
+  border-radius: 0 0 15px 15px;
 
   &.active {
     background-color: $dark-color;
-    position: absolute;
-    top: -20px;
+    position: fixed;
+    top: 0;
+    overflow-x: scroll;
+    max-height: 100%;
     display: flex;
+    padding: 10px;
 
     & .categories__item {
       width: 100%;

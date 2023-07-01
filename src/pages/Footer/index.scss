@@ -8,6 +8,7 @@
   }
 
   &__description {
+    margin-left: 10px;
     @include font-style(14px, normal);
     transition: font-size 0.5s ease;
   }
