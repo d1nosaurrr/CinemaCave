@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/CinemaCave/static/css/main.7221175b.css",
-    "main.js": "/CinemaCave/static/js/main.1210b0a8.js",
-    "static/js/211.2db30927.chunk.js": "/CinemaCave/static/js/211.2db30927.chunk.js",
-    "static/js/606.ddcdf87b.chunk.js": "/CinemaCave/static/js/606.ddcdf87b.chunk.js",
+    "main.css": "/CinemaCave/static/css/main.66d12453.css",
+    "main.js": "/CinemaCave/static/js/main.5392b5a6.js",
+    "static/js/211.c40241df.chunk.js": "/CinemaCave/static/js/211.c40241df.chunk.js",
+    "static/js/606.48d8fcb7.chunk.js": "/CinemaCave/static/js/606.48d8fcb7.chunk.js",
     "static/media/logo.svg": "/CinemaCave/static/media/logo.3da36df0fc0f61bc27f273c580240334.svg",
     "index.html": "/CinemaCave/index.html",
-    "main.7221175b.css.map": "/CinemaCave/static/css/main.7221175b.css.map",
-    "main.1210b0a8.js.map": "/CinemaCave/static/js/main.1210b0a8.js.map",
-    "211.2db30927.chunk.js.map": "/CinemaCave/static/js/211.2db30927.chunk.js.map",
-    "606.ddcdf87b.chunk.js.map": "/CinemaCave/static/js/606.ddcdf87b.chunk.js.map"
+    "main.66d12453.css.map": "/CinemaCave/static/css/main.66d12453.css.map",
+    "main.5392b5a6.js.map": "/CinemaCave/static/js/main.5392b5a6.js.map",
+    "211.c40241df.chunk.js.map": "/CinemaCave/static/js/211.c40241df.chunk.js.map",
+    "606.48d8fcb7.chunk.js.map": "/CinemaCave/static/js/606.48d8fcb7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7221175b.css",
-    "static/js/main.1210b0a8.js"
+    "static/css/main.66d12453.css",
+    "static/js/main.5392b5a6.js"
   ]
 }
