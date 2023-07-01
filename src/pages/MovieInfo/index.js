@@ -26,7 +26,6 @@ export default function MovieInfo() {
         dispatch(fetchMovieVideo(id))
         dispatch(fetchSimilarMovie(id))
     }, [dispatch, id]);
-    console.log(movieVideo)
 
     const {
         title,
@@ -104,12 +103,12 @@ export default function MovieInfo() {
                                     e.preventDefault();
                                     document.querySelector('.movie__preview').scrollLeft += e.deltaY + e.deltaX;
                                 }}>
-                                <li className='preview__item'>
+                                {movieVideo && <li className='preview__item'>
                                     <iframe allow='autoplay; encrypted-media'
                                             allowFullScreen title='video'
                                             src={`https://www.youtube.com/embed/${movieVideo.key}`}
                                             className='f-width preview__video'></iframe>
-                                </li>
+                                </li>}
                                 {movieImages.backdrops.slice(0, 7).map(({file_path}) =>
                                     <li key={file_path} className='preview__item'>
                                         <img

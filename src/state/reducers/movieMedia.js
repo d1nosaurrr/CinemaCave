@@ -15,7 +15,6 @@ const initialState = {
 
 
 export const reducer = (state = initialState, action) => {
-    console.log(action.payload)
     switch (action.type) {
         case FETCH_MOVIE_MEDIA_BEGIN            :
             return {...state, isLoading: true};
