@@ -48,10 +48,10 @@ export const fetchFilterMovie = (query) => {
     }
 }
 
-export const fetchMovieByQuery = (query, search = false) => {
+export const fetchMovieByQuery = (query, search = false, page = 1) => {
     return (dispatch) => {
         dispatch(fetchMovieBegin());
-        axios.get(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`,
+        axios.get(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=${page}`,
             headers
         )
             .then(({data}) => {

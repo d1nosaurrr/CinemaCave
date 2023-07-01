@@ -6,7 +6,7 @@ export default function Index({props}) {
             <li className='movie__item br-15 p-relative draw-border'>
                 <Link to={`/movie/${props.id}`} className='d-flex br-15 item__card'>
                     <img
-                        src={'https://image.tmdb.org/t/p/original/' + props.poster_path}
+                        src={`https://image.tmdb.org/t/p/original/${props.poster_path}`}
                         alt={props.original_title + ' poster'}
                         className='f-width br-15 card__logo'
                         width='140'

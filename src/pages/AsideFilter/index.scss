@@ -4,6 +4,7 @@
   float: right;
   z-index: 10;
   flex-direction: column;
+  gap: 10px;
   width: 100%;
 
   &.active {
@@ -11,6 +12,7 @@
     position: absolute;
     top: -20px;
     display: flex;
+
     & .categories__item {
       width: 100%;
       border: 1px solid #2c2c2c;
@@ -20,9 +22,11 @@
 
 .movie {
   &__filter {
-    margin: 10px;
+    padding: 10px;
+    border: 1px solid $accent-color;
 
     &:hover {
+      background-color: $light-color;
       color: $accent-color;
     }
   }
@@ -47,7 +51,7 @@
 .categories {
   &__item {
     width: 150px;
-    padding: 20px;
+    padding: 10px;
     @include font-style(16px, normal);
     transition: 0.25s;
 
@@ -68,7 +72,6 @@
     cursor: pointer;
     position: fixed;
     z-index: 999;
-    //top: 80px;
     right: 20px;
     height: 29px;
     width: 31px;
@@ -150,5 +153,25 @@
   }
   .categories__item {
     @include font-style(18px, normal);
+  }
+}
+
+.select {
+  appearance: none;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  padding: 10px;
+  background-color: $accent-color;
+  color: white;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-ms-expand {
+    display: none;
   }
 }

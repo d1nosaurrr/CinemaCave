@@ -53,20 +53,21 @@ export default function AsideFilter({handleFilter}) {
                         setIsAsideActive(false);
                         handleFilter(activeFilter)
                     }}
-                    className='movie__filter' icon={faFilter}/>
+                    className='br-15 movie__filter' icon={faFilter}/>
+
                 <select
                     defaultValue='popularity.desc'
-
+                    className='br-15 select movie_popularity'
                     onChange={({target}) => activeFilter.sort = target.value}
                     name='sort'>
-                    <option value='popularity.desc'>More popular first</option>
-                    <option value='popularity.asc'>Less popular first</option>
+                    <option value='popularity.desc'>More popular</option>
+                    <option value='popularity.asc'>Less popular</option>
                     <option value='primary_release_date.desc'>Newer</option>
                     <option value='primary_release_date.asc'>Older</option>
                 </select>
                 <select
                     onChange={({target}) => activeFilter.year = target.value}
-                    className='movie__years'
+                    className='br-15 select movie__years'
                     defaultValue={activeFilter.year}
                 >
                     {years.current}
@@ -74,7 +75,7 @@ export default function AsideFilter({handleFilter}) {
                 <ul className='d-flex movie__categories categories'>
                     {genre.map(({id, name}) => <li
                         onClick={() => handleToggleGenre(id.toString())}
-                        className={`categories__item ${activeFilter.genre.includes(id.toString()) ? 'active' : ''}`}
+                        className={`br-15 categories__item ${activeFilter.genre.includes(id.toString()) ? 'active' : ''}`}
                         key={id}>{name}</li>)}
                 </ul>
             </aside>

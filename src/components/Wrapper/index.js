@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import AsideFilter from '../../pages/AsideFilter';
 import MovieList from '../../pages/MovieList';
-import {fetchFilterMovie} from '../../state/actions/movieList';
+import {fetchFilterMovie, fetchMovieByQuery} from '../../state/actions/movieList';
 import {useSearchParams} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faArrowLeft, faArrowRight} from '@fortawesome/free-solid-svg-icons';
@@ -24,8 +24,15 @@ export default function Wrapper() {
     };
     useEffect(() => {
         window.scrollTo({top: 0, behavior: 'smooth'});
-        setSearchParams({...filterValue});
-        dispatch(fetchFilterMovie({...filterValue}));
+        if (searchParams.get('query')) {
+            const query = searchParams.get('query');
+            setSearchParams(`&query=${query}&page=${filterValue.page}`);
+
+            dispatch(fetchMovieByQuery(query, true, filterValue.page));
+        } else {
+            setSearchParams({...filterValue});
+            dispatch(fetchFilterMovie({...filterValue}));
+        }
     }, [filterValue])
 
     const handlePagination = (pageNum) => {

@@ -12,12 +12,11 @@ export default function Header() {
     const dispatch = useDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const [searchValue, setSearchValue] = useState(searchParams.get('query') || '');
+    const [searchValue, setSearchValue] = useState('');
     const {movieQuery, isLoading} = useSelector(({movies}) => movies)
 
     useEffect(() => {
-        searchValue !== '' &&
-        dispatch(fetchMovieByQuery(searchValue));
+        dispatch(fetchMovieByQuery(searchValue !== '' ? searchValue : searchParams.get('query')));
     }, [searchValue]);
 
     const handleClearSearch = () => {
@@ -26,8 +25,8 @@ export default function Header() {
     const handleOnSearch = (e) => {
         e.preventDefault();
         if (searchValue !== '') {
-            setSearchParams(`query=${searchValue}`);
             handleClearSearch();
+            setSearchParams(`query=${searchValue}`);
             dispatch(fetchMovieByQuery(searchValue, true));
         }
     }
