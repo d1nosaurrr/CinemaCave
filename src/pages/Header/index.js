@@ -1,24 +1,40 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import logo from '../../images/logo/logo.svg';
 import {faX} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {fetchMovie, fetchMovieByQuery} from '../../state/actions/movieList';
-import {useDispatch} from 'react-redux';
-import {Link} from 'react-router-dom';
+import {fetchMovieByQuery} from '../../state/actions/movieList';
+import {useDispatch, useSelector} from 'react-redux';
+import {Link, useSearchParams} from 'react-router-dom';
+import SearchDropdown from "../../components/SearchDropdown";
+import Loader from "../../components/Loader";
 
-export default function Index() {
-    // const dispatch = useDispatch();
+export default function Header() {
+    const dispatch = useDispatch();
+    const [searchParams, setSearchParams] = useSearchParams();
 
-    const [searchValue, setSearchValue] = useState('');
+    const [searchValue, setSearchValue] = useState(searchParams.get('query') || '');
+    const {movieQuery, isLoading} = useSelector(({movies}) => movies)
+
+    useEffect(() => {
+        searchValue !== '' &&
+        dispatch(fetchMovieByQuery(searchValue));
+    }, [searchValue]);
 
     const handleClearSearch = () => {
         setSearchValue('');
     }
-    const handleSearch = (e) => {
+    const handleOnSearch = (e) => {
         e.preventDefault();
-        e !== '' ? setSearchValue(e.target.value) : console.log('Search')
+        if (searchValue !== '') {
+            setSearchParams(`query=${searchValue}`);
+            handleClearSearch();
+            dispatch(fetchMovieByQuery(searchValue, true));
+        }
+    }
+    const handleOnChangeSearch = (e) => {
+        e.preventDefault();
+        if (e !== '') setSearchValue(e.target.value);
         setSearchValue(e.target.value);
-        // searchValue !== '' ? dispatch(fetchMovieByQuery(searchValue)) : dispatch(fetchMovie());
     }
 
     return (
@@ -30,7 +46,7 @@ export default function Index() {
                         <span className='logo__title'>Movie Cave</span>
                     </Link>
 
-                    <form onSubmit={(e) => e.preventDefault()}
+                    <form onSubmit={(e) => handleOnSearch(e)}
                           className='d-flex br-15 header__search' action=''>
                         <label className='sr-only' htmlFor='search'>Search</label>
                         <input
@@ -40,14 +56,22 @@ export default function Index() {
                             id='search'
                             placeholder='Movie title'
                             value={searchValue}
-                            onChange={(e) => handleSearch(e)}
+                            onChange={(e) => handleOnChangeSearch(e)}
                         />
                         <FontAwesomeIcon
-                            className='header__search-btn'
+                            className={`header__search-btn ${searchValue !== '' ? '' : 'hidden'}`}
                             icon={faX}
                             onClick={handleClearSearch}
                         />
                     </form>
+                    {searchValue !== '' &&
+                        <div className='dropdown__search'>
+                            {isLoading ? <Loader/> :
+                                movieQuery.length > 0 ?
+                                    <SearchDropdown movie={movieQuery} clearSearch={handleClearSearch}/> :
+                                    <p className='dropdown__no-result'>No result</p>}
+                        </div>
+                    }
                 </section>
             </div>
         </header>

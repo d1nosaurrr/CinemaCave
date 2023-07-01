@@ -20,22 +20,12 @@ export default function Wrapper() {
     const {movieList} = useSelector(({movies}) => movies);
 
     const handleFilter = (data) => {
-        setFilterValue(() => ({
-            genre: data.genre,
-            year: data.year,
-            sort: data.sort,
-            page: page.currPage,
-        }));
+        setFilterValue({...data});
     };
     useEffect(() => {
         window.scrollTo({top: 0, behavior: 'smooth'});
-        setSearchParams({...searchParams, ...filterValue},
-            dispatch(fetchFilterMovie({
-                genre: filterValue.genre,
-                year: filterValue.year,
-                sort: filterValue.sort,
-                page: filterValue.page
-            })));
+        setSearchParams({...filterValue});
+        dispatch(fetchFilterMovie({...filterValue}));
     }, [filterValue])
 
     const handlePagination = (pageNum) => {

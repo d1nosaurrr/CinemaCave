@@ -1,7 +1,7 @@
 import {
     FETCH_MOVIE_BEGIN,
     FETCH_MOVIE_FAILURE,
-    FETCH_MOVIE_INFO_SUCCESS,
+    FETCH_MOVIE_INFO_SUCCESS, FETCH_MOVIE_QUERY_SUCCESS,
     FETCH_MOVIE_SIMILAR_SUCCESS,
     FETCH_MOVIE_SUCCESS
 } from "../actions/movieList";
@@ -10,6 +10,7 @@ const initialState = {
     movieList: [],
     movieInfo: {},
     movieSimilar: {},
+    movieQuery: {},
     page: {
         currPage: 0,
         totalPages: 0
@@ -35,6 +36,8 @@ export const reducer = (state = initialState, action) => {
             return {...state, isLoading: false, movieInfo: action.payload};
         case FETCH_MOVIE_SIMILAR_SUCCESS:
             return {...state, isLoading: false, movieSimilar: action.payload};
+        case FETCH_MOVIE_QUERY_SUCCESS:
+            return {...state, isLoading: false, movieQuery: action.payload.results};
         case FETCH_MOVIE_FAILURE:
             return {...state, isLoading: false, isError: true, error: action.payload};
         default:

@@ -1,0 +1,45 @@
+.dropdown {
+  &__search {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background-color: $gray-color;
+    padding: 20px;
+    border-radius: 0 0 15px 15px;
+  }
+
+  &__list {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__no-result {
+    text-align: center;
+  }
+
+  &__no-result,
+  &__description,
+  &__title,
+  &__link,
+  &__item {
+    text-decoration: none;
+    color: $dark-color;
+  }
+
+  &__item {
+    padding: 20px;
+    @include font-style(16px, normal);
+    transition: 0.25s;
+
+    &:focus,
+    &:hover {
+      box-shadow: inset 0 -100px 0 0 $accent-color;
+      color: #242423;
+    }
+
+    border: 1px solid $dark-light-color
+
+  }
+}

@@ -5,6 +5,7 @@ export const FETCH_MOVIE_BEGIN = "FETCH_MOVIE_BEGIN";
 export const FETCH_MOVIE_SUCCESS = "FETCH_MOVIE_SUCCESS";
 export const FETCH_MOVIE_INFO_SUCCESS = "FETCH_MOVIE_INFO_SUCCESS";
 export const FETCH_MOVIE_SIMILAR_SUCCESS = "FETCH_MOVIE_SIMILAR_SUCCESS";
+export const FETCH_MOVIE_QUERY_SUCCESS = "FETCH_MOVIE_QUERY_SUCCESS";
 export const FETCH_MOVIE_FAILURE = "FETCH_MOVIE_FAILURE";
 
 export const fetchMovieBegin = () => {
@@ -18,6 +19,9 @@ export const fetchMovieInfoSuccess = (data) => {
 }
 export const fetchMovieSimilarSuccess = (data) => {
     return {type: FETCH_MOVIE_SIMILAR_SUCCESS, payload: data};
+}
+export const fetchMovieQuerySuccess = (data) => {
+    return {type: FETCH_MOVIE_QUERY_SUCCESS, payload: data};
 }
 export const fetchMovieFailure = (error) => {
     return {type: FETCH_MOVIE_FAILURE, payload: error};
@@ -44,13 +48,15 @@ export const fetchFilterMovie = (query) => {
     }
 }
 
-export const fetchMovieByQuery = (query) => {
+export const fetchMovieByQuery = (query, search = false) => {
     return (dispatch) => {
         dispatch(fetchMovieBegin());
         axios.get(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`,
             headers
         )
-            .then(({data}) => dispatch(fetchMovieSuccess(data)))
+            .then(({data}) => {
+                search ? dispatch(fetchMovieSuccess(data)) : dispatch(fetchMovieQuerySuccess(data))
+            })
             .catch((err) => dispatch(fetchMovieFailure(err)));
     }
 }

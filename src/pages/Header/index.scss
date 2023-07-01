@@ -37,12 +37,17 @@
     }
 
     &-btn {
+      display: block;
       color: $accent-color;
-    }
 
-    &-btn:hover,
-    &-btn:focus {
-      color: $light-color;
+      &.hidden {
+        display: none;
+      }
+
+      &:hover,
+      &:focus {
+        color: $light-color;
+      }
     }
   }
 }
@@ -64,7 +69,6 @@
 }
 
 
-
 .header__search {
   display: flex;
   width: 200px;
@@ -80,7 +84,8 @@
   }
 }
 
-@media screen and (min-width: 460px) { .logo {
+@media screen and (min-width: 460px) {
+  .logo {
     &__img {
       width: 75px;
       height: 75px;

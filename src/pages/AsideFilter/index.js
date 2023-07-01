@@ -50,7 +50,7 @@ export default function AsideFilter({handleFilter}) {
 
                 <FontAwesomeIcon
                     onClick={() => {
-                        toggleMenu();
+                        setIsAsideActive(false);
                         handleFilter(activeFilter)
                     }}
                     className='movie__filter' icon={faFilter}/>
