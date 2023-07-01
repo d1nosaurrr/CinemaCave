@@ -1,6 +1,6 @@
-import Index from '../../components/MovieListItem';
-import PageNotFound from '../PageNotFound';
-import Loader from '../../components/Loader';
+import Index from '../MovieListItem';
+import PageNotFound from '../../pages/PageNotFound';
+import Loader from '../Loader';
 import {useSelector} from 'react-redux';
 
 export default function MovieList({list}) {

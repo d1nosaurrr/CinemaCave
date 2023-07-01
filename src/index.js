@@ -12,7 +12,7 @@ root.render(
     <React.StrictMode>
         <ErrorBoundary>
             <Provider store={store}>
-                <BrowserRouter  basename="/CinemaCave">
+                <BrowserRouter basename="/CinemaCave">
                     <App/>
                 </BrowserRouter>
             </Provider>

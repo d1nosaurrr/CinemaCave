@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 
-export default function Index({props}) {
+export default function MovieListItem({props}) {
     return (
         <>
             <li className='movie__item br-15 p-relative draw-border'>
@@ -8,7 +8,7 @@ export default function Index({props}) {
                     <img
                         src={`https://image.tmdb.org/t/p/original/${props.poster_path}`}
                         alt={props.original_title + ' poster'}
-                        className='f-width br-15 card__logo'
+                        className='f-width br-15 card__logo skeleton'
                         width='140'
                         height='200'
                         loading='lazy'

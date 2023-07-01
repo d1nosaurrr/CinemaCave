@@ -6,7 +6,7 @@ import {fetchMovieInfo, fetchSimilarMovie} from '../../state/actions/movieList';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 import {fetchMovieImages} from '../../state/actions/movieImages';
-import MovieList from '../MovieList';
+import MovieList from '../../components/MovieList';
 
 export default function MovieInfo() {
     const dispatch = useDispatch();
@@ -67,7 +67,7 @@ export default function MovieInfo() {
                     <img
                         src={'https://image.tmdb.org/t/p/original/' + poster_path}
                         alt={original_title + ' poster'}
-                        className='info__logo'
+                        className='info__logo skeleton'
                         width='240'
                         height='350'
                     />
@@ -105,7 +105,7 @@ export default function MovieInfo() {
                                         <img
                                             src={'https://image.tmdb.org/t/p/original/' + file_path}
                                             alt={original_title + ' img'}
-                                            className='preview__img'
+                                            className='preview__img skeleton'
                                             width='220'
                                             height='250'
                                             loading='lazy'

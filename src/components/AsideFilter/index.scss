@@ -35,6 +35,7 @@
     @include flex-align-center;
     flex-direction: column;
     justify-content: center;
+    gap: 5px;
     width: 100%;
     text-align: center;
     @media screen and (min-width: 767px) {
@@ -57,7 +58,7 @@
 
     &:focus,
     &:hover {
-      box-shadow: inset 0 -3.25em 0 0 $accent-color;
+      box-shadow: inset 0 -5em 0 0 $accent-color;
       color: #242423;
     }
 
